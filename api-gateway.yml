@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: task-service
+              uri: lb://TASK-SERVICE}
+              predicates:
+                - Path=/api/v1/tasks/**
+              filters:
+                - StripPrefix=2
+
+            - id: project-service
+              uri: lb://PROJECT-SERVICE}
+              predicates:
+                - Path=/api/v1/projects/**
+              filters:
+                - StripPrefix=2
+
+            - id: user-service
+              uri: lb://USER-SERVICE}
+              predicates:
+                - Path=/api/v1/users/**
+              filters:
+                - StripPrefix=2
+              
