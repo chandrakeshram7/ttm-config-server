@@ -12,21 +12,21 @@ spring:
         webflux:
           routes:
             - id: task-service
-              uri: lb://TASK-SERVICE}
+              uri: lb://TASK-SERVICE
               predicates:
                 - Path=/api/v1/tasks/**
               filters:
                 - StripPrefix=2
 
             - id: project-service
-              uri: lb://PROJECT-SERVICE}
+              uri: lb://PROJECT-SERVICE
               predicates:
                 - Path=/api/v1/projects/**
               filters:
                 - StripPrefix=2
 
             - id: user-service
-              uri: lb://USER-SERVICE}
+              uri: lb://USER-SERVICE
               predicates:
                 - Path=/api/v1/users/**
               filters:
